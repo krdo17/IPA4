@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenangan Sekolah - Game Teka-Teki</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: url('image.png') center/cover no-repeat;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: bold;
+            color: #ffda44;
+            text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #ffcc00, #6a1b9a);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #6a1b9a, #ffcc00);
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .question-container {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .question-container input {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 1px solid #fff;
+            margin-top: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .question-container button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background: #ffda44;
+            border: none;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .success-message {
+            display: none;
+            color: #00ff00;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="start-screen">
+        <h1>Selamat datang di Kenangan Sekolah!</h1>
+        <p>Tekan "Start" untuk memulai permainan teka-teki.</p>
+        <a href="#" class="btn" id="start-btn">Start</a>
+    </div>
+
+    <div class="container question-container" id="question-screen">
+        <h1>Pertanyaan Teka-Teki</h1>
+        <p>Apa warna langit pada siang hari?</p>
+        <input type="text" id="answer-input" placeholder="Masukkan Jawaban Anda">
+        <button id="check-answer-btn">Cek Jawaban</button>
+        <p class="success-message" id="success-message">Selamat! Jawaban Anda benar. Klik di bawah untuk melanjutkan.</p>
+        <a href="kenangan.html" class="btn" id="next-btn" style="display:none;">Lanjutkan ke Kenangan</a>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById('start-btn');
+        const questionScreen = document.getElementById('question-screen');
+        const answerInput = document.getElementById('answer-input');
+        const checkAnswerBtn = document.getElementById('check-answer-btn');
+        const successMessage = document.getElementById('success-message');
+        const nextBtn = document.getElementById('next-btn');
+        const startScreen = document.getElementById('start-screen');
+
+        startBtn.addEventListener('click', () => {
+            startScreen.style.display = 'none';
+            questionScreen.style.display = 'block';
+        });
+
+        checkAnswerBtn.addEventListener('click', () => {
+            const answer = answerInput.value.trim().toLowerCase();
+            if (answer === 'biru') {
+                successMessage.style.display = 'block';
+                nextBtn.style.display = 'inline-block';
+            } else {
+                alert('Jawaban salah! Coba lagi.');
+            }
+        });
+    </script>
+</body>
+</html>
